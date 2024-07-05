@@ -62,4 +62,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    //Define the relationship between Users and Profiles
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
+    //Define the relationship between Users and Loans
+    public function loans()
+    {
+        return $this->hasMany(Loan::class);
+    }
+    //Define the relationship between Users and LoanApplications
+    public function loanApplications(){
+        return $this->hasMany(LoanApplication::class);
+    }
 }

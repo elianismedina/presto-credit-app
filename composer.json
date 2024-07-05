@@ -12,6 +12,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "open-admin-ext/helpers": "^1.0",
+        "open-admin-ext/log-viewer": "^1.0",
         "open-admin-org/open-admin": "^1.0",
         "tightenco/ziggy": "^2.0"
     },

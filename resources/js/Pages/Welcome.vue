@@ -31,26 +31,36 @@ function handleImageError() {
 <template>
 
     <Head title="Welcome" />
-    <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-        <div class="flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-            <div class="flex flex-col w-full max-w-2xl lg:max-w-7xl">
-                <header class="flex flex-row items-end justify-between bg-slate-500">
-                    <nav v-if="canLogin" class="flex flex-row">
+    <div>
+        <div class="flex justify-center selection:bg-[#FF2D20] selection:text-white">
+            <div class="w-full max-w-2xl lg:max-w-7xl">
+                <header class=" bg-primary-300">
+                    <nav v-if="canLogin">
                         <Link v-if="$page.props.auth.user" :href="route('dashboard')"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                         Dashboard
                         </Link>
                         <template v-else>
-                            <ApplicationLogoVue class="h-20 w-20" />
-                            <Link :href="route('login')"
-                                class="rounded-md px-3 py-8 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                            Log in
-                            </Link>
 
-                            <Link v-if="canRegister" :href="route('register')"
-                                class="rounded-md px-3 py-8 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                            Register
-                            </Link>
+                            <div class="flex flex-row">
+                                <ApplicationLogoVue class="h-20 w-20 ml-4" />
+                                <div class="flex flex-row gap-4 ml-16">
+                                    <div class="py-8">
+                                        <Link :href="route('login')"
+                                            class="font-semibold rounded-md px-3 py-8 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                        Log in
+                                        </Link>
+                                    </div>
+                                    <div class="py-8">
+                                        <Link v-if="canRegister" :href="route('register')"
+                                            class="font-semibold rounded-md px-3 py-8 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                        Register
+                                        </Link>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </template>
                     </nav>
                 </header>
@@ -59,7 +69,7 @@ function handleImageError() {
 
                 </main>
 
-                <footer class="py-16 text-center text-sm text-black dark:text-white/70 bg-slate-500">
+                <footer class="py-16 text-center text-sm text-black dark:text-white/70 bg-primary-300">
                     Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
                 </footer>
             </div>
