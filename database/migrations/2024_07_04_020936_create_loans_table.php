@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->foreignIdFor(\App\Models\LoanStatus::class)->constrained();
-            $table->decimal('amount', 15, 2);
+            $table->decimal('amount', 7, 2);
             $table->decimal('interest_rate',5,2);
+            $table->decimal('amount_to_pay', 7, 2);
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

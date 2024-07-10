@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Loan::class)->constrained();
-            $table->decimal('amount', 15, 2);
+            $table->decimal('amountpaid', 15, 2);
             $table->date('payment_date');
             $table->timestamps();
         });

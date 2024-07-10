@@ -3,6 +3,8 @@
 import { Head, Link } from '@inertiajs/vue3';
 import ApplicationLogoVue from '@/Components/ApplicationLogo.vue';
 
+
+
 defineProps({
     canLogin: {
         type: Boolean,
@@ -41,22 +43,37 @@ function handleImageError() {
                         Dashboard
                         </Link>
                         <template v-else>
-
-                            <div class="flex flex-row">
+                            <div class="flex justify-between px-4 md:px-8 h-16 md:h-20">
                                 <ApplicationLogoVue class="h-20 w-20 ml-4" />
-                                <div class="flex flex-row gap-4 ml-16">
-                                    <div class="py-8">
+                                <div class="flex flex-row gap-4 md:gap-12">
+                                    <div class="py-6 hidden lg:block">
                                         <Link :href="route('login')"
-                                            class="font-semibold rounded-md px-3 py-8 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                        Log in
+                                            class="bg-primary-500 p-3 px-8 text-slate-100 font-bold">
+                                        Pedir mi
+                                        crédito
+                                        ya
+                                        <fa icon="arrow-right" class="ml-2" />
                                         </Link>
+
                                     </div>
-                                    <div class="py-8">
+                                    <div class="py-6">
                                         <Link v-if="canRegister" :href="route('register')"
                                             class="font-semibold rounded-md px-3 py-8 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                        Register
+                                        Registrarse
                                         </Link>
                                     </div>
+                                    <div class="py-6">
+                                        <Link :href="route('login')"
+                                            class="font-semibold rounded-md text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                        Ingresar
+                                        </Link>
+                                    </div>
+                                    <div
+                                        class="flex flex-row gap-2 bg-primary-500 px-2 h-1/2 items-center justify-between mt-4 rounded-md p-0.5">
+                                        <p class="hidden lg:block py-8">Menu</p>
+                                        <fa icon="bars" class="text-2xl text-black dark:text-white py-8" />
+                                    </div>
+
                                 </div>
 
                             </div>
