@@ -3,8 +3,6 @@
 import { Head, Link } from '@inertiajs/vue3';
 import ApplicationLogoVue from '@/Components/ApplicationLogo.vue';
 
-
-
 defineProps({
     canLogin: {
         type: Boolean,
@@ -28,22 +26,33 @@ function handleImageError() {
     document.getElementById('docs-card-content')?.classList.add('!flex-row');
     document.getElementById('background')?.classList.add('!hidden');
 }
+
 </script>
+<script>
+export default {
+    data() {
+        return {
+            min: 150000,
+            max: 1200000,
+            slider: 150000,
+        }
+    },
+}</script>
 
 <template>
 
     <Head title="Welcome" />
     <div>
         <div class="flex justify-center selection:bg-[#FF2D20] selection:text-white">
-            <div class="w-full max-w-2xl lg:max-w-7xl">
-                <header class=" bg-primary-300">
+            <div class="w-full max-w-2xl lg:max-w-full">
+                <header class=" bg-slate-100">
                     <nav v-if="canLogin">
                         <Link v-if="$page.props.auth.user" :href="route('dashboard')"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                         Dashboard
                         </Link>
                         <template v-else>
-                            <div class="flex justify-between px-4 md:px-8 h-16 md:h-20">
+                            <div class="flex justify-between px-6 md:px-16 h-16 md:h-20">
                                 <ApplicationLogoVue class="h-20 w-20 ml-4" />
                                 <div class="flex flex-row gap-4 md:gap-12">
                                     <div class="py-6 hidden lg:block">
@@ -54,7 +63,6 @@ function handleImageError() {
                                         ya
                                         <fa icon="arrow-right" class="ml-2" />
                                         </Link>
-
                                     </div>
                                     <div class="py-6">
                                         <Link v-if="canRegister" :href="route('register')"
@@ -73,17 +81,56 @@ function handleImageError() {
                                         <p class="hidden lg:block py-8">Menu</p>
                                         <fa icon="bars" class="text-2xl text-black dark:text-white py-8" />
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </template>
                     </nav>
                 </header>
 
-                <main class="mt-6 h-screen">
+                <main class="flex flex-col h-full bg-gradient-to-b from-primary-300 to-primary-700">
+                    <section class="md:ml-48">
+                        <div class="ml-6 py-8">
+                            <h2 class="text-2xl font-bold md:text-6xl">Prestocredit es dinero <br> sin enredos.</h2>
+                        </div>
+                        <p class="text-md
+                         md:text-lg md:ml-48 ml-6">
+                            Pide tu cupo de crédito en 15 minutos y recibe el dinero en <strong>1 día hábil</strong> .
+                            <br> Desde <strong>$150.000</strong> hasta
+                            <strong>$1.200.000</strong>.
+                            <br>
+                            <span class="hidden lg:block">Sin trámites, filas, anticipos ni cargos ocultos.</span>
+                        </p>
+                        <div class="text-lg md:text-xl py-4 font-bold underline md:ml-48 ml-6">
+                            <Link
+                                class="ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                :href="route('login')">¿Cómo funciona tu cupo de crédito?</Link>
+                        </div>
+                    </section>
+                    <section
+                        class="rounded-md mt-4 ml-6 mr-6 flex flex-col justify-center items-center bg-slate-100 h-1/3">
 
+                        <div class="mb-6">
+
+                            <div class="mt-2 mb-2">
+                                <v-label class="py-2 font-bold">¿Cuánto dinero necesitas?</v-label>
+                                <v-slider v-model="slider" thumb-label="always" :max="max" :min="min" :step="10000"
+                                    class="align-center" hide-details>
+                                </v-slider>
+                                <v-text-field v-model="slider" density="compact" style="width: 230px" type="number"
+                                    hide-details single-line variant="outlined"></v-text-field>
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <Link :href="route('login')"
+                                class="bg-primary-500 p-3 px-8 text-slate-100 font-bold w-full text-center">
+                            Pedir mi
+                            crédito
+                            ya
+                            <fa icon="arrow-right" class="ml-2" />
+                            </Link>
+                        </div>
+                    </section>
                 </main>
 
                 <footer class="py-16 text-center text-sm text-black dark:text-white/70 bg-primary-300">

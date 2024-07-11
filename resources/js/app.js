@@ -9,7 +9,16 @@ import { createInertiaApp } from "@inertiajs/vue3";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy";
 
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
+
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+const vuetify = createVuetify({
+    components,
+    directives,
+});
 library.add(fas);
 
 createInertiaApp({
@@ -22,6 +31,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .component("fa", FontAwesomeIcon)
+            .use(vuetify)
             .use(plugin)
             .use(ZiggyVue)
             .mount(el);
