@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\LoanApplication;
 
 class LoanApplicationController extends Controller
 {
@@ -12,7 +13,11 @@ class LoanApplicationController extends Controller
      */
     public function index()
     {
-        //
+        define('NUMBER_OF_ITEMS_PER_PAGE', 6);
+        $applications = LoanApplication::paginate(NUMBER_OF_ITEMS_PER_PAGE);
+        return inertia('Applications/Index',[
+            'applications' => $applications,
+        ]);
     }
 
     /**
@@ -20,7 +25,7 @@ class LoanApplicationController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Applications/Create');
     }
 
     /**
@@ -28,7 +33,9 @@ class LoanApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        LoanApplication::create($request->validated());
+      return redirect()->route('applications.index');
     }
 
     /**

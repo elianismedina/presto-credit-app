@@ -1,7 +1,9 @@
 <script setup>
 
-import { Head, Link } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/inertia-vue3';
+import { Head, defineProps } from '@inertiajs/inertia-vue3';
 import ApplicationLogoVue from '@/Components/ApplicationLogo.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
     canLogin: {
@@ -107,22 +109,23 @@ export default {
                         </div>
                     </section>
                     <section
-                        class="rounded-md mt-4 ml-6 mr-6 flex flex-col justify-center items-center bg-slate-100 h-1/3">
+                        class="rounded-md mt-4 ml-6 mr-6 flex flex-col justify-center items-center bg-slate-100 h-2/4">
 
-                        <div class="mb-6">
+                        <div class="mb-2">
+                            <v-label class="font-bold mb-8">¿Cuánto dinero necesitas?</v-label>
 
                             <div class="mt-2 mb-2">
-                                <v-label class="py-2 font-bold">¿Cuánto dinero necesitas?</v-label>
+
                                 <v-slider v-model="slider" thumb-label="always" :max="max" :min="min" :step="10000"
-                                    class="align-center" hide-details>
+                                    class="align-center" hide-details track-color="blue" thumb-color="black">
                                 </v-slider>
                                 <v-text-field v-model="slider" density="compact" style="width: 230px" type="number"
                                     hide-details single-line variant="outlined"></v-text-field>
                             </div>
 
                         </div>
-                        <div class="">
-                            <Link :href="route('login')"
+                        <div class="mt-4">
+                            <Link :href="route('applications.create')"
                                 class="bg-primary-500 p-3 px-8 text-slate-100 font-bold w-full text-center">
                             Pedir mi
                             crédito
