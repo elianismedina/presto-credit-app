@@ -47,6 +47,7 @@ export default {
     <div>
         <div class="flex justify-center selection:bg-[#FF2D20] selection:text-white">
             <div class="w-full max-w-2xl lg:max-w-full">
+
                 <header class=" bg-slate-100">
                     <nav v-if="canLogin">
                         <Link v-if="$page.props.auth.user" :href="route('dashboard')"
@@ -89,8 +90,9 @@ export default {
                     </nav>
                 </header>
 
-                <main class="flex flex-col h-full bg-gradient-to-b from-primary-300 to-primary-700">
-                    <section class="md:ml-48">
+                <main
+                    class="flex flex-col items-center justify-start h-full bg-gradient-to-b from-primary-300 to-primary-700">
+                    <section>
                         <div class="ml-6 py-8">
                             <h2 class="text-2xl font-bold md:text-6xl">Prestocredit es dinero <br> sin enredos.</h2>
                         </div>
@@ -109,10 +111,10 @@ export default {
                         </div>
                     </section>
                     <section
-                        class="rounded-md mt-4 ml-6 mr-6 flex flex-col justify-center items-center bg-slate-100 h-2/4">
+                        class=" mb-4 rounded-md flex flex-col justify-center items-center bg-slate-100 h-full w-4/5 md:h-2/5 md:grid md:grid-cols-3 md:gap-2 md:max-w-5xl">
 
-                        <div class="mb-2">
-                            <v-label class="font-bold mb-8">¿Cuánto dinero necesitas?</v-label>
+                        <div class="mb-2 mt-2 md:px-12 md:col-span-2">
+                            <v-label class="font-bold mb-4">¿Cuánto dinero necesitas?</v-label>
 
                             <div class="mt-2 mb-2">
 
@@ -122,9 +124,9 @@ export default {
                                 <v-text-field v-model="slider" density="compact" style="width: 230px" type="number"
                                     hide-details single-line variant="outlined"></v-text-field>
                             </div>
-
+                            <p class="text-sm">Ingresa múltiplos de $10.000</p>
                         </div>
-                        <div class="mt-4">
+                        <div class="mt-8 md:px-12">
                             <Link :href="route('applications.create')"
                                 class="bg-primary-500 p-3 px-8 text-slate-100 font-bold w-full text-center">
                             Pedir mi
