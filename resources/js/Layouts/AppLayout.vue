@@ -305,6 +305,9 @@ const logout = () => {
             <main>
                 <slot />
             </main>
+            <footer class="py-16 text-center text-sm text-black dark:text-white/70 bg-primary-300 mt-4">
+                Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
+            </footer>
         </div>
     </div>
 </template>

@@ -3,7 +3,8 @@
 import { Link } from '@inertiajs/inertia-vue3';
 import { Head, defineProps } from '@inertiajs/inertia-vue3';
 import ApplicationLogoVue from '@/Components/ApplicationLogo.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import PreLoanApplication from '@/Components/PreLoanApplication.vue';
+
 
 defineProps({
     canLogin: {
@@ -22,24 +23,9 @@ defineProps({
     },
 });
 
-function handleImageError() {
-    document.getElementById('screenshot-container')?.classList.add('!hidden');
-    document.getElementById('docs-card')?.classList.add('!row-span-1');
-    document.getElementById('docs-card-content')?.classList.add('!flex-row');
-    document.getElementById('background')?.classList.add('!hidden');
-}
+
 
 </script>
-<script>
-export default {
-    data() {
-        return {
-            min: 150000,
-            max: 1200000,
-            slider: 150000,
-        }
-    },
-}</script>
 
 <template>
 
@@ -96,46 +82,23 @@ export default {
                         <div class="ml-6 py-8">
                             <h2 class="text-2xl font-bold md:text-6xl">Prestocredit es dinero <br> sin enredos.</h2>
                         </div>
-                        <p class="text-md
-                         md:text-lg md:ml-48 ml-6">
+                        <p class="text-md md:text-lg ml-6">
                             Pide tu cupo de crédito en 15 minutos y recibe el dinero en <strong>1 día hábil</strong> .
                             <br> Desde <strong>$150.000</strong> hasta
                             <strong>$1.200.000</strong>.
                             <br>
                             <span class="hidden lg:block">Sin trámites, filas, anticipos ni cargos ocultos.</span>
                         </p>
-                        <div class="text-lg md:text-xl py-4 font-bold underline md:ml-48 ml-6">
+                        <div class="text-lg md:text-xl py-4 font-bold underline ml-6">
                             <Link
                                 class="ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                 :href="route('login')">¿Cómo funciona tu cupo de crédito?</Link>
                         </div>
                     </section>
-                    <section
-                        class=" mb-4 rounded-md flex flex-col justify-center items-center bg-slate-100 h-full w-4/5 md:h-2/5 md:grid md:grid-cols-3 md:gap-2 md:max-w-5xl">
-
-                        <div class="mb-2 mt-2 md:px-12 md:col-span-2">
-                            <v-label class="font-bold mb-4">¿Cuánto dinero necesitas?</v-label>
-
-                            <div class="mt-2 mb-2">
-
-                                <v-slider v-model="slider" thumb-label="always" :max="max" :min="min" :step="10000"
-                                    class="align-center" hide-details track-color="blue" thumb-color="black">
-                                </v-slider>
-                                <v-text-field v-model="slider" density="compact" style="width: 230px" type="number"
-                                    hide-details single-line variant="outlined"></v-text-field>
-                            </div>
-                            <p class="text-sm">Ingresa múltiplos de $10.000</p>
-                        </div>
-                        <div class="mt-8 md:px-12">
-                            <Link :href="route('applications.create')"
-                                class="bg-primary-500 p-3 px-8 text-slate-100 font-bold w-full text-center">
-                            Pedir mi
-                            crédito
-                            ya
-                            <fa icon="arrow-right" class="ml-2" />
-                            </Link>
-                        </div>
+                    <section>
+                        <pre-loan-application />
                     </section>
+
                 </main>
 
                 <footer class="py-16 text-center text-sm text-black dark:text-white/70 bg-primary-300">
